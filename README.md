@@ -1,4 +1,4 @@
-# How to change times
+## How to change times
 
   To change the standart¹ on/off times you
   just change the first² time with the time
@@ -12,3 +12,16 @@
    power_on_time = "05:00:00"²
    power_off_time = "18:00:00"³
    ```
+## Requirements
+  
+  - a TV capable of CEC-HDMI
+  - Raspberry Pi
+  - cec-utils package¹
+  - Python-Interpreter
+
+¹ installt with apt and following command
+  ```
+  sudo apt-get install cec-utils
+  ```
+
+## How to
