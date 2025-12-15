@@ -17,11 +17,13 @@
   - a TV capable of CEC-HDMI
   - Raspberry Pi
   - cec-utils package¹
-  - Python-Interpreter
+  - Python-Interpreter¹
 
-¹ installt with apt and following command
+¹ installt with apt and following commands
   ```
   sudo apt-get install cec-utils
+
+  sudo apt-get install python3
   ```
 
 ## How to
