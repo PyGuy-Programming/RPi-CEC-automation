@@ -27,3 +27,4 @@
   ```
 
 ## How to
+  - click on ```Code``` and then on ```Download ZIP```
