@@ -28,3 +28,6 @@
 
 ## How to
   - click on ```Code``` and then on ```Download ZIP```
+  - extract all files from the .zip
+  - open terminal and go to your Downloads folder and than to the RPi-CEC-automation-main folder
+  - type ```python3 on_off.py``` and it runs
