@@ -3,33 +3,24 @@
   - a TV capable of CEC-HDMI
   - Raspberry Pi
   - cec-utils package¹
-  - Python-Interpreter¹
+  - Python-Interpreter of choice
 
 ¹ installt with apt and following commands
   ```
   sudo apt-get install cec-utils
-
-  sudo apt-get install python3
   ```
-
 ## How to
-  - click on ```Code``` and then on ```Download ZIP```
-  - extract all files from the .zip
-  - open terminal and go to your Downloads folder and than to the RPi-CEC-automation-main folder
-  - type ```python3 on_off.py``` and it runs
 
+  - press on ```Code``` and then on ```Download ZIP```
+  - extract all files from the ZIP file
+  - open the .py file in your Python-Interpreter of choice and run the file
 
 ## How to change times
 
-  To change the standart¹ on/off times you
-  just change the first² time with the time
-  you want the TV to turn on and the second³
-  time with the time you want the TV to 
-  turn off.
+   to change time just change the two variabels¹ for the times
 
-  ¹
-   ```
-   #defining times
-   power_on_time = "05:00:00"²
-   power_off_time = "18:00:00"³
-   ```
+   ¹
+```
+   31  power_on_time = "05:00:00"
+   32  power_off_time = "18:00:00"
+```
