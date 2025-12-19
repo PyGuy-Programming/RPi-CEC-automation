@@ -6,16 +6,16 @@
   - Python-Interpreter of choice
   - ```ttkbootstrap``` Python-Package²
 
-¹ installt with apt and following commands
+¹ Installt with apt and following commands
   ```
   sudo apt-get install cec-utils
   ```
 
-² install with pip:
+² Install with pip:
   ```
   python3 -m pip install ttkbootstrap
   ```
-  if this doesn't work use the following commands:
+  If this doesn't work use the following commands:
   ```
   python3 -m venv tutorial_env
 
@@ -24,14 +24,14 @@
   python3 -m pip install ttkbootstrap
   ```
 
-## How to  
+## How to
   - press on ```Code``` and then on ```Download ZIP```
   - extract all files from the ZIP file
   - open the .py file in your Python-Interpreter of choice and run the file
 
 ## How to change times
 
-   to change time just change the two variabels¹ for the times
+   To change time just change the two variabels¹ for the times:
 
    ¹
 ```
