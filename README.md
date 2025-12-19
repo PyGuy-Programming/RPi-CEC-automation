@@ -3,7 +3,7 @@
   - a TV capable of CEC-HDMI
   - Raspberry Pi
   - cec-utils package¹
-  - Python-Interpreter of choice
+  - Python3
   - ```ttkbootstrap``` Python-Package²
 
 ¹ Installt with apt and following commands
@@ -27,7 +27,7 @@
 ## How to
   - press on ```Code``` and then on ```Download ZIP```
   - extract all files from the ZIP file
-  - open the .py file in your Python-Interpreter of choice and run the file
+  - open Terminal and type python3 ~/Downloads/RPi-CEC-automation-main/on_off_gui.py
 
 ## How to change times
 
