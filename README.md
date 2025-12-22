@@ -11,11 +11,7 @@
   sudo apt-get install cec-utils
   ```
 
-² Install with pip:
-  ```
-  python3 -m pip install ttkbootstrap
-  ```
-  If this doesn't work use the following commands:
+² Install with pip and a virtual env.:
   ```
   python3 -m venv tutorial_env
 
@@ -27,8 +23,14 @@
 ## How to
   - press on ```Code``` and then on ```Download ZIP```
   - extract all files from the ZIP file
-  - open Terminal and type python3 ~/Downloads/RPi-CEC-automation-main/on_off_gui.py
+  - open Terminal and type:
+    ```
+    source tutorial_env/bin/activate
 
+    cd ~/Downloads/RPi-CEC-automation-main/
+
+    python3 on_off_gui.py
+    ```
 ## How to change times
 
    To change time just change the two variabels¹ for the times:
