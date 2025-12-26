@@ -33,10 +33,4 @@
     ```
 ## How to change times
 
-   To change time just change the two variabels¹ for the times:
-
-   ¹
-```
-   41  power_on_time = "05:00:00"
-   42  power_off_time = "18:00:00"
-```
+   To change time just change the two variabels for the times in the config.conf file.
