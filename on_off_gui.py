@@ -13,11 +13,19 @@ config.read("config.conf")
 '''getting a setting from config.conf'''
 show_current_time = int(config.get("Widgets", "show_current_time"))
 
+'''getting and using some more settings from config.conf'''
+window_size_x = str(config.get("Widgets", "window_size_x"))
+window_size_y = str(config.get("Widgets", "window_size_y"))
+
+window_size_x_y = str(window_size_x + "x" + window_size_y)
+
+ttkTheme = str(config.get("Widgets", "ttkTheme"))
+
 '''defining and configuring Window and other things'''
-root = ttk.Window(themename="superhero")
-root.geometry("350x215")
+root = ttk.Window(themename=ttkTheme)
+root.geometry(window_size_x_y)
 root.title(" ")
-root.overrideredirect(int(config.get("Widgets", "movable_window")))
+root.overrideredirect(int(config.get("Widgets", "unmovable_window")))
 
 '''getting another setting from config.conf'''
 resizable_window = (int(config.get("Widgets", "resizable_window")))
@@ -42,16 +50,16 @@ power_off_time = str(config.get("Times", "power_off_time"))
 '''defining label and String Variable for showing current time'''
 label_time_var = tk.StringVar(value=datetime.now().strftime("%H:%M:%S"))
 label_time = ttk.Label(root, textvariable=label_time_var)
-label_time_settings1 = ttk.Label(root, text=(f"power on: {power_on_time}"))
-label_time_settings2 = ttk.Label(root, text=(f"power off: {power_off_time}"))
+label_time_settings1 = ttk.Label(root, text=(f"power on time: {power_on_time}"))
+label_time_settings2 = ttk.Label(root, text=(f"power off time: {power_off_time}"))
 
 '''finding out screensize'''
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
 '''saving size of window'''
-window_width = 350
-window_height = 215
+window_width = int(window_size_x)
+window_height = int(window_size_y)
 
 '''calculating middle of screen'''
 x = (screen_width // 2) - (window_width // 2)
@@ -78,7 +86,8 @@ def tv_off():
             stderr=subprocess.DEVNULL
             )
     root.after(2000, _run2)
-#on function        
+    
+'''on function'''
 def tv_on():
     subprocess.run(
         'echo on 0 | cec-client -s -d 1',
@@ -143,7 +152,6 @@ def show_time():
         show_current_time = True
 
 '''defining and packing window, labels and buttons'''
-
 button1 = ttk.Button(root, text="START", command=loop, bootstyle="primary", width=10)
 button1.pack(pady=7)
 
