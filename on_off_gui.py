@@ -1,4 +1,4 @@
-#importing all needed modules
+#Importing all needed modules
 import configparser
 import subprocess
 from datetime import datetime
@@ -8,18 +8,18 @@ import ttkbootstrap as ttk
 
 
 
-#preparing configparser
+#Preparing configparser
 
 config = configparser.ConfigParser()
 config.read("config.conf")
 
 
-#getting and using some more settings from config.conf
+#Getting and using some more settings from config.conf
 
 show_current_time = int(config.get("Widgets", "show_current_time"))
 
 
-#getting and using some more settings from config.conf
+#Getting and using some more settings from config.conf
 
 window_size_x = str(config.get("Widgets", "window_size_x"))
 window_size_y = str(config.get("Widgets", "window_size_y"))
@@ -29,7 +29,7 @@ window_size_x_y = str(window_size_x + "x" + window_size_y)
 ttkTheme = str(config.get("Widgets", "ttkTheme"))
 
 
-#defining and configuring Window and other things
+#Defining and configuring Window and other things
 
 root = ttk.Window(themename=ttkTheme)
 root.geometry(window_size_x_y)
@@ -37,7 +37,7 @@ root.title(" ")
 root.overrideredirect(int(config.get("Widgets", "unmovable_window")))
 
 
-#getting another setting from config.conf
+#Getting another setting from config.conf
 
 resizable_window = (int(config.get("Widgets", "resizable_window")))
 if resizable_window == 1:
@@ -55,13 +55,13 @@ title.pack(side="bottom")
 sep2 = ttk.Separator(root, orient='horizontal', style="primary.Horizontal.TSeperator")
 
 
-#getting on/off-times from config file
+#Getting on/off-times from config file
 
 power_on_time = str(config.get("Times", "power_on_time"))
 power_off_time = str(config.get("Times", "power_off_time"))
 
 
-#defining label and String Variable for showing current time
+#Defining label and String Variable for showing current time
 
 label_time_var = tk.StringVar(value=datetime.now().strftime("%H:%M:%S"))
 label_time = ttk.Label(root, textvariable=label_time_var)
@@ -69,40 +69,40 @@ label_time_settings1 = ttk.Label(root, text=(f"power on time: {power_on_time}"))
 label_time_settings2 = ttk.Label(root, text=(f"power off time: {power_off_time}"))
 
 
-#finding out screensize
+#Finding out screensize
 
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
 
-#saving size of window
+#Saving size of window
 
 window_width = int(window_size_x)
 window_height = int(window_size_y)
 
 
-#calculating middle of screen
+#Calculating middle of screen
 
 x = (screen_width // 2) - (window_width // 2)
 y = (screen_height // 2) - (window_height // 2)
 
 
-#putting window in middle of screen
+#Putting window in middle of screen
 
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 
-#temporarily setting stop to True
+#Defaulty setting stop to True
 
 stop = True
 
 
-#defining status label
+#Defining status label
 
 label_status = ttk.Label(root, text=" ")    
 
 
-#off function
+#Defining off function
 
 def tv_off():
     label_status.config(text="powering off ...")
@@ -116,7 +116,7 @@ def tv_off():
     root.after(2000, _run2)
     
     
-#on function
+#Defining on function
     
 def tv_on():
     subprocess.run(
@@ -128,14 +128,14 @@ def tv_on():
     label_status.config(text="powering on ...")
     
 
-#definig function for closing window and stopping application
+#Definig function for closing window and stopping application
     
 def close():
     root.destroy()
     sys.exit()
     
     
-#main function
+#Defining main function
     
 def main():
     time_now = datetime.now().strftime("%H:%M:%S")
@@ -145,7 +145,7 @@ def main():
         tv_on()
 
 
-#definig the Main loop
+#Definig the Main loop
         
 def loop():
     global stop
@@ -163,7 +163,7 @@ def loop():
         _run()
     
     
-#defining the stop of the Main loop
+#Defining the stop of the Main loop
         
 def stoping_loop():
     global stop, label_status
@@ -173,7 +173,10 @@ def stoping_loop():
         root.after(1500, lambda: label_status.config(text="stopping ..."))
         root.after(2200, lambda: label_status.config(text=" "))
         stop = True
-
+        
+        
+#Defining Show_Time
+            
 def show_time():
     global show_current_time
     if show_current_time == 1:
@@ -190,7 +193,13 @@ def show_time():
         show_current_time = True
 
 
-#defining and packing window, labels and buttons
+#Defining function for updating the clock
+        
+def update_clock():
+    label_time_var.set(datetime.now().strftime("%H:%M:%S"))
+    root.after(1000, update_clock)
+    
+#Defining and packing window, labels and buttons
         
 button1 = ttk.Button(root, text="START", command=loop, bootstyle="primary", width=10)
 button1.pack(pady=7)
@@ -207,13 +216,11 @@ sep2.pack(fill='x', pady=10)
 label_status.pack(side="bottom")
 
 
-    #defining function for updating the clock
+#Starting update Loop
 
-def update_clock():
-    label_time_var.set(datetime.now().strftime("%H:%M:%S"))
-    root.after(1000, update_clock)
-    
 update_clock()
         
+        
+# Starting GUI
 
 root.mainloop()
