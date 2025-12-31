@@ -27,10 +27,8 @@
     ```
     source tutorial_env/bin/activate
 
-    cd ~/Downloads/RPi-CEC-automation-main/
-
-    python3 on_off_gui.py
+    python3 ~/Downloads/RPi-CEC-automation-main/on_off_gui.py 
     ```
 ## How to change times
 
-   To change time just change the two variabels for the times in the config.conf file.
+   To change time just change the two variabels for the times in the [config.conf](https://github.com/PyGuy-Programming/RPi-CEC-automation/blob/main/config.conf) file.
