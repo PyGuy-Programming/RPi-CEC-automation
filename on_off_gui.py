@@ -4,7 +4,7 @@ import subprocess
 from datetime import datetime
 import tkinter as tk
 import sys
-import ttkbootstrap as ttk
+import ttkbootstrap as ttk
 
 
 
@@ -14,9 +14,9 @@ config = configparser.ConfigParser()
 config.read("config.conf")
 
 
-#Getting and using some more settings from config.conf
+#Defaultly NOT showing current time and time settings
 
-show_current_time = int(config.get("Widgets", "show_current_time"))
+show_current_time = 0
 
 
 #Getting and using some more settings from config.conf
@@ -80,7 +80,9 @@ screen_height = root.winfo_screenheight()
 window_width = int(window_size_x)
 window_height = int(window_size_y)
 
-
+window_height2 = window_height + 65
+window_height2 = str(window_height2)
+
 #Calculating middle of screen
 
 x = (screen_width // 2) - (window_width // 2)
@@ -101,7 +103,7 @@ stop = True
 
 label_status = ttk.Label(root, text=" ")    
 
-
+
 #Defining off function
 
 def tv_off():
@@ -154,7 +156,7 @@ def loop():
         root.after(750, lambda: label_status.config(text="starting .. "))
         root.after(1500, lambda: label_status.config(text="starting ..."))
         root.after(2200, lambda: label_status.config(text=" "))
-        stop = False
+        root.after(2200, stop = False)
         def _run():
             if not stop:
                 main()
@@ -172,26 +174,26 @@ def stoping_loop():
         root.after(750, lambda: label_status.config(text="stopping .. "))
         root.after(1500, lambda: label_status.config(text="stopping ..."))
         root.after(2200, lambda: label_status.config(text=" "))
-        stop = True
+        root.after(2200, stop = True)
         
         
-#Defining Show_Time
+#Defining show_time
             
 def show_time():
     global show_current_time
     if show_current_time == 1:
-        root.geometry("350x215")
+        root.geometry(window_size_x_y)
         label_time.pack_forget()
         label_time_settings1.pack_forget()
         label_time_settings2.pack_forget()
         show_current_time = False
-    elif show_current_time == 0:
-        root.geometry("350x280")
+    elif show_current_time == 0:
+        window_size_x_y2 = str(window_size_x + "x"+ window_height2)
+        root.geometry(window_size_x_y2)
         label_time.pack()
         label_time_settings1.pack()
         label_time_settings2.pack()
         show_current_time = True
-
 
 #Defining function for updating the clock
         
@@ -209,7 +211,7 @@ button2.pack(pady=7)
 
 time_on_off = ttk.Button(root, text="Show time", command=show_time, width=10)
 time_on_off.pack(pady=7)
-
+
 sep2.pack(fill='x', pady=10)
 
 
@@ -220,7 +222,7 @@ label_status.pack(side="bottom")
 
 update_clock()
         
-        
+
 # Starting GUI
 
 root.mainloop()
