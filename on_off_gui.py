@@ -135,7 +135,7 @@ label_status = ttk.Label(root, text=" ")
 def tv_off():
 
     label_status.config(text="powering off ...")
-
+    print("off")
     def _run2():
 
         subprocess.run(
@@ -201,7 +201,7 @@ def main():
 def loop():
 
     global stop
-
+    #print("stop")
     if stop:
 
         label_status.config(text="starting .  ")
@@ -212,14 +212,13 @@ def loop():
 
         root.after(2200, lambda: label_status.config(text=" "))
 
-        root.after(2200, stop = False)
+        stop = False
         def _run():
 
             if not stop:
 
                 main()
 
-                
 
                 root.after(1000, _run)
 
@@ -232,6 +231,10 @@ def stoping_loop():
 
     global stop, label_status
 
+    def do_stop():
+       global stop
+       stop = False
+
     if stop is False:
 
         label_status.config(text="stopping .  ")
@@ -242,7 +245,7 @@ def stoping_loop():
 
         root.after(2200, lambda: label_status.config(text=" "))
 
-        root.after(2200, stop = True)
+        stop = True
 
 
 #Defining show_time
@@ -264,8 +267,7 @@ def show_time():
         show_current_time = False
 
     elif show_current_time == 0:
-        window_size_x_y2 = str(window_size_x + "x"
-+ window_height2)
+        window_size_x_y2 = str(window_size_x + "x" + window_height2)
         root.geometry(window_size_x_y2)
 
         label_time.pack()
